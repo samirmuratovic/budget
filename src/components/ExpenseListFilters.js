@@ -63,10 +63,4 @@ const ExpenseListFilters = () => {
   )
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     filters: state.filters,
-//   }
-// }
-
 export default ExpenseListFilters
