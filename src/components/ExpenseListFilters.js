@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 // import moment from 'moment'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import 'react-dates/initialize'
 import 'react-dates/lib/css/_datepicker.css'
 import { DateRangePicker } from 'react-dates'
@@ -12,19 +12,15 @@ import {
   setEndDate,
 } from '../actions/filters'
 
-const ExpenseListFilters = ({
-  filters,
-  setTextFilter,
-  setStartDate,
-  setEndDate,
-  sortByAmount,
-  sortByDate,
-}) => {
+const ExpenseListFilters = () => {
   const [focusedInput, setFocusedInput] = useState(null)
 
+  const dispatch = useDispatch()
+  const filters = useSelector((state) => state.filters)
+
   const onDatesChange = ({ startDate, endDate }) => {
-    setStartDate(startDate)
-    setEndDate(endDate)
+    dispatch(setStartDate(startDate))
+    dispatch(setEndDate(endDate))
   }
 
   const onFocusChange = (focusedInput) => {
@@ -36,7 +32,7 @@ const ExpenseListFilters = ({
       <input
         type="text"
         value={filters.text}
-        onChange={(e) => setTextFilter(e.target.value)}
+        onChange={(e) => dispatch(setTextFilter(e.target.value))}
       />
       <label htmlFor="sort-select">Sort expenses</label>
       <select
@@ -44,7 +40,9 @@ const ExpenseListFilters = ({
         id="sort-select"
         value={filters.sortBy}
         onChange={(e) =>
-          e.target.value === 'date' ? sortByDate() : sortByAmount()
+          e.target.value === 'date'
+            ? dispatch(sortByDate())
+            : dispatch(sortByAmount())
         }
       >
         <option value="date">Date</option>
@@ -65,16 +63,10 @@ const ExpenseListFilters = ({
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    filters: state.filters,
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     filters: state.filters,
+//   }
+// }
 
-export default connect(mapStateToProps, {
-  setTextFilter,
-  setStartDate,
-  setEndDate,
-  sortByAmount,
-  sortByDate,
-})(ExpenseListFilters)
+export default ExpenseListFilters
