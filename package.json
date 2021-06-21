@@ -7,7 +7,6 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "babel-test": "^0.2.4",
-    "jest": "^27.0.4",
     "moment": "^2.29.1",
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
