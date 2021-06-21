@@ -9,9 +9,13 @@ const ExpenseList = () => {
   )
   return (
     <div>
-      {expenses.map((expense) => (
-        <ExpenseListItem {...expense} key={expense.id} />
-      ))}
+      {expenses.length === 0 ? (
+        <p>No expenses</p>
+      ) : (
+        expenses.map((expense) => (
+          <ExpenseListItem {...expense} key={expense.id} />
+        ))
+      )}
     </div>
   )
 }
