@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import moment from 'moment'
 import { SingleDatePicker } from 'react-dates'
 import 'react-dates/initialize'
-import 'react-dates/lib/css/_datepicker.css'
 
 const ExpenseForm = ({ onSubmit, description: d, amount: a, note: n }) => {
   const [description, setDescription] = useState(d)
