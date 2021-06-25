@@ -17,9 +17,11 @@ const LoginPage = () => {
       }}
     >
       <div className="box-layout__box">
-        <h1 className="box-layout__title">Budget App</h1>
+        <h1 className="box-layout__title">Budget</h1>
         <p>Take control of your finances.</p>
-        <button onClick={() => dispatch(startLogin())}>Login</button>
+        <button className="button" onClick={() => dispatch(startLogin())}>
+          Login with Google
+        </button>
       </div>
     </div>
   )
