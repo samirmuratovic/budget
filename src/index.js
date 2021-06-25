@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import AppRouter from './routers/AppRouter'
+import AppRouter, { history } from './routers/AppRouter'
 import configureStore from './store/configureStore'
 import { startSetExpenses } from './actions/expenses'
 import './styles/styles.scss'
@@ -16,16 +16,26 @@ const jsx = (
   </Provider>
 )
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById('root'))
+let hasRendered = false
+const renderApp = () => {
+  if (!hasRendered) {
+    ReactDOM.render(jsx, document.getElementById('root'))
+    hasRendered = true
+  }
+}
 
-store.dispatch(startSetExpenses()).then(() => {
-  ReactDOM.render(jsx, document.getElementById('root'))
-})
+ReactDOM.render(<p>Loading...</p>, document.getElementById('root'))
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    console.log('log in')
+    store.dispatch(startSetExpenses()).then(() => {
+      renderApp()
+      if (history.location.pathname === '/') {
+        history.push('/dashboard')
+      }
+    })
   } else {
-    console.log('log out')
+    renderApp()
+    history.push('/')
   }
 })
