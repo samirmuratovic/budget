@@ -2,5 +2,12 @@
   background: $purple;
   border: none;
   color: white;
+  display: inline-block;
+  line-height: 1;
   padding: $s-size $m-size;
+  text-decoration: none;
+}
+
+.button--link {
+  background: none;
 }

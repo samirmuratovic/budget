@@ -12,7 +12,12 @@ const Header = () => {
           <Link className="header__title" to="/dashboard">
             <h1>Budget App</h1>
           </Link>
-          <button onClick={() => dispatch(startLogout())}>Logout</button>
+          <button
+            className="button button--link"
+            onClick={() => dispatch(startLogout())}
+          >
+            Logout
+          </button>
         </div>
       </div>
     </header>
