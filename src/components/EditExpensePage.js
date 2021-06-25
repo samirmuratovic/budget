@@ -18,13 +18,13 @@ const EditExpensePage = () => {
         onSubmit={(expense) => {
           // console.log(id, expense)
           dispatch(startEditExpense(id, expense))
-          history.push('/')
+          history.push('/dashboard')
         }}
       />
       <button
         onClick={() => {
           dispatch(startRemoveExpense({ id }))
-          history.push('/')
+          history.push('/dashboard')
         }}
       >
         Remove
