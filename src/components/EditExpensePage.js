@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { editExpense, removeExpense } from '../actions/expenses'
+import { startEditExpense, startRemoveExpense } from '../actions/expenses'
 import ExpenseForm from './ExpenseForm'
 
 const EditExpensePage = () => {
@@ -17,13 +17,13 @@ const EditExpensePage = () => {
         {...expense}
         onSubmit={(expense) => {
           // console.log(id, expense)
-          dispatch(editExpense(id, expense))
+          dispatch(startEditExpense(id, expense))
           history.push('/')
         }}
       />
       <button
         onClick={() => {
-          dispatch(removeExpense({ id }))
+          dispatch(startRemoveExpense({ id }))
           history.push('/')
         }}
       >
