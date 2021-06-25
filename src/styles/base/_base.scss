@@ -1,8 +1,23 @@
+html {
+  font-size: 62.5%;
+}
+
 .is-active {
   font-weight: bold;
 }
 
 body {
-  background: #222;
-  color: white;
+  color: $dark-grey;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: $m-size;
+  line-height: 1.6;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
 }
