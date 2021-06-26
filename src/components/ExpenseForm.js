@@ -48,38 +48,43 @@ const ExpenseForm = ({ onSubmit, description: d, amount: a, note: n }) => {
   }
 
   return (
-    <>
-      {error && <div>{error}</div>}
-      <form onSubmit={onAddExpense}>
-        <input
-          type="text"
-          placeholder="Description"
-          autoFocus
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Amount"
-          value={amount}
-          onChange={onAmountChange}
-        />
-        <SingleDatePicker
-          date={createdAt}
-          onDateChange={onDateChange}
-          focused={calendarFocused}
-          onFocusChange={onFocusChange}
-          numberOfMonths={1}
-          isOutsideRange={() => false}
-        />
-        <textarea
-          placeholder="Add a note for your expense"
-          value={note}
-          onChange={(e) => setNote(e.target.value)}
-        ></textarea>
-        <button type="submit">Add Expense</button>
-      </form>
-    </>
+    <form className="form" onSubmit={onAddExpense}>
+      {error && <p className="form__error">{error}</p>}
+      <input
+        className="text-input"
+        type="text"
+        placeholder="Description"
+        autoFocus
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
+      <input
+        className="text-input"
+        type="text"
+        placeholder="Amount"
+        value={amount}
+        onChange={onAmountChange}
+      />
+      <SingleDatePicker
+        date={createdAt}
+        onDateChange={onDateChange}
+        focused={calendarFocused}
+        onFocusChange={onFocusChange}
+        numberOfMonths={1}
+        isOutsideRange={() => false}
+      />
+      <textarea
+        className="textarea"
+        placeholder="Add a note for your expense"
+        value={note}
+        onChange={(e) => setNote(e.target.value)}
+      ></textarea>
+      <div>
+        <button className="button" type="submit">
+          Add Expense
+        </button>
+      </div>
+    </form>
   )
 }
 
