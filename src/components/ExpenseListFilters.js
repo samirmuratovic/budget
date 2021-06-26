@@ -40,7 +40,6 @@ const ExpenseListFilters = () => {
           />
         </div>
         <div className="input-group__item">
-          <label htmlFor="sort-select">Sort expenses</label>
           <select
             className="select"
             name="sort"

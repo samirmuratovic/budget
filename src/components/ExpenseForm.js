@@ -81,7 +81,7 @@ const ExpenseForm = ({ onSubmit, description: d, amount: a, note: n }) => {
       ></textarea>
       <div>
         <button className="button" type="submit">
-          Add Expense
+          Save Expense
         </button>
       </div>
     </form>
