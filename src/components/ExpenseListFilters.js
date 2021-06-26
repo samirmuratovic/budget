@@ -28,37 +28,48 @@ const ExpenseListFilters = () => {
   }
 
   return (
-    <div>
-      <input
-        type="text"
-        value={filters.text}
-        onChange={(e) => dispatch(setTextFilter(e.target.value))}
-      />
-      <label htmlFor="sort-select">Sort expenses</label>
-      <select
-        name="sort"
-        id="sort-select"
-        value={filters.sortBy}
-        onChange={(e) =>
-          e.target.value === 'date'
-            ? dispatch(sortByDate())
-            : dispatch(sortByAmount())
-        }
-      >
-        <option value="date">Date</option>
-        <option value="amount">Amount</option>
-      </select>
-      <DateRangePicker
-        startDate={filters.startDate}
-        startDateId="startDate"
-        endDate={filters.endDate}
-        endDateId="endDate"
-        onDatesChange={onDatesChange}
-        focusedInput={focusedInput}
-        onFocusChange={onFocusChange}
-        numberOfMonths={1}
-        isOutsideRange={() => false}
-      />
+    <div className="content-container">
+      <div className="input-group">
+        <div className="input-group__item">
+          <input
+            className="text-input"
+            placeholder="Search expenses"
+            type="text"
+            value={filters.text}
+            onChange={(e) => dispatch(setTextFilter(e.target.value))}
+          />
+        </div>
+        <div className="input-group__item">
+          <label htmlFor="sort-select">Sort expenses</label>
+          <select
+            className="select"
+            name="sort"
+            id="sort-select"
+            value={filters.sortBy}
+            onChange={(e) =>
+              e.target.value === 'date'
+                ? dispatch(sortByDate())
+                : dispatch(sortByAmount())
+            }
+          >
+            <option value="date">Date</option>
+            <option value="amount">Amount</option>
+          </select>
+        </div>
+        <div className="input-group__item">
+          <DateRangePicker
+            startDate={filters.startDate}
+            startDateId="startDate"
+            endDate={filters.endDate}
+            endDateId="endDate"
+            onDatesChange={onDatesChange}
+            focusedInput={focusedInput}
+            onFocusChange={onFocusChange}
+            numberOfMonths={1}
+            isOutsideRange={() => false}
+          />
+        </div>
+      </div>
     </div>
   )
 }
